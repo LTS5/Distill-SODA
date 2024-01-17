@@ -5,6 +5,8 @@ This repository contains official [PyTorch](https://pytorch.org/) implementation
 
 <img src="image/distillsoda.png" alt="drawing" width="1000"/>
 
+**Unveiling the self-supervised vision transformer (ViT) for source-free open-set domain adaptation (SF-OSDA).** The source model $f_s$ undergoes adaptation, resulting in the adapted model $f_t$ acclimating to an unlabeled target domain, accommodating both closed-set (known) and open-set (unknown) classes, all while maintaining a strict boundary of not accessing the source dataset. Our methodology capitalizes on distilling knowledge from a self-supervised ViT, leveraging its potent capability to generate contextually enriched target embeddings. Guidance for knowledge distillation can originate from two principal sources: self-supervised pre-trained transformer models without adaptation and models that have undergone extensive self-supervised pre-training on publicly available histopathology datasets or target domain data, showcasing our approach's adaptability.
+
 
 ## Table of Contents
 - [Installation](#installation)
