@@ -38,7 +38,7 @@ pip install scikit-learn
 
 ## Usage
 
-### Data Preparation
+### (A) Data Preparation
 
 To reproduce our results, download the CRC tissue characterization datasets used in our work:
 
@@ -85,7 +85,7 @@ rm -r data/Fold2
 rm fold2.zip
 ```
 
-### Source Models
+### (B) Download Source Model
 
 Download our source models following the google drive links below:
 
@@ -97,7 +97,7 @@ Download our source models following the google drive links below:
 
 If you wish to re-train or train models on your source dataset, use the [T3PO repo](https://github.com/agaldran/t3po) following their instructions.
 
-### Distill-SODA
+### (C) Run Distill-SODA
 
 Adapt the source model on the target data by distilling knowledge from a self-supervised ViT:
 
@@ -112,7 +112,7 @@ python main_distillsoda.py --data_path path/to/target_data \
 Our method seamlessly integrates with popular public models, such as DINO (ViT-B/16). If you wish to leverage these models, you can easily copy the [weights](https://dl.fbaipublicfiles.com/dino/dino_vitbase16_pretrain/dino_vitbase16_pretrain_full_checkpoint.pth) to use them as a starting point for your experiments.
 
 
-### Self-Train ViT on Target Data
+### (D) Run DINO+AdvStyle
 
 In our work, we introduced DINO+AdvStyle, a novel style-based adversarial data augmentation. This technique serves as hard positives for self-training a ViT, leading to highly contextualized embeddings for the target dataset. The incorporation of DINO+AdvStyle significantly enhances the performance of Distill-SODA.
 To leverage DINO+AdvStyle and self-train a pretrained ViT on the target dataset, run the following script:
@@ -123,10 +123,10 @@ python -m torch.distributed.launch --nproc_per_node=2 main_dinoadvstyle.py --arc
         --momentum_teacher 0.996 --warmup_epochs 0 --batch_size_per_gpu 16
 ```
 
-This command initiates the self-training process, utilizing DINO+AdvStyle for robust and context-aware embeddings. The resulting pretrained ViT can be further employed in the Distill-SODA process, enhancing the adaptation on the target dataset.
+This command initiates the self-training process, utilizing DINO+AdvStyle for robust and context-aware embeddings. The resulting pretrained ViT can be further employed in the Distill-SODA process in (See (C)), enhancing the adaptation on the target dataset.
 
 
-To reproduce our results, you can find the checkpoints for the three utilized datasets below:
+To reproduce our results, you can find the self-trained ViT checkpoints for the three utilized datasets below:
 
 | Dataset | SSL Backbone | Download |
 | --------|--------------|----------|
