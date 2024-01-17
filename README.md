@@ -48,10 +48,10 @@ To reproduce our results, download the CRC tissue characterization datasets used
 ```bash
 # Download
 wget https://zenodo.org/record/53169/files/Kather_texture_2016_image_tiles_5000.zip
-unzip Kather_texture_2016_image_tiles_5000.zip -d data/Kather_texture_2016_image_tiles_5000
+unzip Kather_texture_2016_image_tiles_5000.zip -d data/
 
 # Split
-python data/kather2016.py --path_data_in data/Kather_texture_2016_image_tiles_5000           
+python data/kather16.py --path_data_in data/Kather_texture_2016_image_tiles_5000           
 
 # Clean
 rm -r data/Kather_texture_2016_image_tiles_5000
@@ -65,7 +65,7 @@ wget https://zenodo.org/record/1214456/files/NCT-CRC-HE-100K.zip
 unzip NCT-CRC-HE-100K.zip -d data/
 
 # Split
-python data/kather100k.py --path_data_in data/NCT-CRC-HE-100K           
+python data/kather19.py --path_data_in data/NCT-CRC-HE-100K           
 
 # Clean
 rm -r data/NCT-CRC-HE-100K
@@ -73,19 +73,10 @@ rm NCT-CRC-HE-100K.zip
 ```
 
 + CRCTP:
-```bash
-# Download
-wget https://warwick.ac.uk/fac/cross_fac/tia/data/crc-tp/fold2.zip
-7z x fold2.zip && rm fold2.zip
-mv Fold2 data/CRCTP
-
-# Split
-python data/crctp.py --path_data_in Fold2/Training/
-
-# Clean
-rm -r data/Fold2
-rm fold2.zip
 ```
+!! The CRCTP is not publicly available anymore !!
+```
+
 
 ### (B) Download Source Model
 
