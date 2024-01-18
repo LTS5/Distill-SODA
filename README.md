@@ -28,7 +28,7 @@ cd Distill-SODA
 #### Install Dependencies
 ```bash
 conda create --name DistillSODA python=3.8
-conda activate SODA
+conda activate DistillSODA
 
 pip install torch==1.13.0 torchvision==0.14.0 --extra-index-url https://download.pytorch.org/whl/cu113
 conda install -c pytorch faiss-gpu cudatoolkit=11.3
@@ -74,7 +74,7 @@ rm NCT-CRC-HE-100K.zip
 
 + CRCTP:
 ```
-!! The CRCTP is not publicly available anymore !!
+!! The CRCTP dataset is not publicly available anymore !!
 ```
 
 
@@ -111,12 +111,14 @@ In our work, we introduced DINO+AdvStyle, a novel style-based adversarial data a
 To leverage DINO+AdvStyle and self-train a pretrained ViT on the target dataset, run the following script:
 
 ```bash
+wget https://dl.fbaipublicfiles.com/dino/dino_vitbase16_pretrain/dino_vitbase16_pretrain_full_checkpoint.pth
+cp dino_vitbase16_pretrain_full_checkpoint.pth path/to/saving_dir/checkpoint.pth
 python -m torch.distributed.launch --nproc_per_node=2 main_dinoadvstyle.py --arch vit_base --data_path path/to/target_data \
         --dataset_name dataset_name --output_dir path/to/saving_dir \
         --momentum_teacher 0.996 --warmup_epochs 0 --batch_size_per_gpu 16
 ```
 
-This command initiates the self-training process, utilizing DINO+AdvStyle for robust and context-aware embeddings. The resulting pretrained ViT can be further employed in the Distill-SODA process in (See (C)), enhancing the adaptation on the target dataset.
+This command initiates the self-training process, utilizing DINO+AdvStyle for robust and context-aware embeddings. The resulting pretrained ViT can be further employed in the Distill-SODA process in (See (C)), enhancing the adaptation on the target dataset. Note we used two NVIDIA GeForce GTX 1080 Ti for this experiment.
 
 
 To reproduce our results, you can find the self-trained ViT checkpoints for the three utilized datasets below:
