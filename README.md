@@ -133,11 +133,12 @@ To reproduce our results, you can find the self-trained ViT checkpoints for the 
 ## Citation
 
 ```
-@article{vray2023source,
-  title={Source-Free Open-Set Domain Adaptation for Histopathological Images via Distilling Self-Supervised Vision Transformer},
+@article{vray2024distill,
+  title={Distill-SODA: Distilling Self-Supervised Vision Transformer for Source-Free Open-Set Domain Adaptation in Computational Pathology},
   author={Vray, Guillaume and Tomar, Devavrat and Bozorgtabar, Behzad and Thiran, Jean-Philippe},
-  journal={arXiv preprint arXiv:2307.04596},
-  year={2023}
+  journal={IEEE Transactions on Medical Imaging},
+  year={2024},
+  publisher={IEEE}
 }
 ```
 
